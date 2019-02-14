@@ -1,0 +1,6 @@
+.circleci
+.github
+data
+node_modules/*
+test
+.es*

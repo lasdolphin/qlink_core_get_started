@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  engine:
+    image: qlikcore/engine:12.321.0
+    restart: always
+    command: -S AcceptEULA=yes
+    ports:
+      - "19076:9076"
+    volumes:
+      - ./data:/data
+    networks:
+      - front-net
+  front:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - engine
+    networks:
+      - front-net
+networks:
+  front-net:
+
